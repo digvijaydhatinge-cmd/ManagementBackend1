@@ -5,11 +5,11 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the application
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-slim
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose the port your Spring Boot app runs on (usually 8080)
+# Expose the port
 EXPOSE 8080
 
 # Run the jar file
